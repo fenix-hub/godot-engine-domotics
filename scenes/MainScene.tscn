@@ -1,0 +1,838 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://scenes/scripts/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://resources/imgs/arduino_logo.png" type="Texture" id=2]
+[ext_resource path="res://resources/fonts/new_dynamicfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/fonts/ARLRDBD.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/imgs/Path 0.png" type="Texture" id=5]
+[ext_resource path="res://scenes/scripts/status_icon.gd" type="Script" id=6]
+[ext_resource path="res://scenes/scripts/moisture.gd" type="Script" id=7]
+[ext_resource path="res://scenes/scripts/Tree.gd" type="Script" id=8]
+[ext_resource path="res://scenes/scripts/Debug.gd" type="Script" id=9]
+[ext_resource path="res://scenes/scripts/Log.gd" type="Script" id=10]
+[ext_resource path="res://resources/imgs/Background(2).png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 256, 256 )
+margin = Rect2( 20, 0, 20, 0 )
+filter_clip = true
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFontData" id=10]
+antialiased = false
+font_path = "res://resources/fonts/ARLRDBD.TTF"
+
+[sub_resource type="DynamicFont" id=11]
+size = 20
+font_data = SubResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 6.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.195185, 0.195185, 0.216309, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 20
+outline_color = Color( 1, 0.501961, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 30
+outline_color = Color( 1, 0.501961, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0.72549, 0.74902, 1 )
+border_width_top = 1
+border_color = Color( 0, 0.658824, 0.682353, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0.592157, 0.611765, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0142822, 0.442841, 0.457031, 1 )
+border_blend = true
+corner_detail = 10
+
+[sub_resource type="DynamicFont" id=18]
+size = 36
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.806152, 0.0535336, 0.234792, 1 )
+border_width_top = 1
+border_color = Color( 0.682353, 0, 0.172549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.67451, 0, 0.164706, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.458824, 0.0156863, 0.137255, 1 )
+border_blend = true
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.74902, 0, 0.180392, 1 )
+border_width_top = 1
+border_color = Color( 0.682353, 0, 0.176471, 1 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="AudioStreamGenerator" id=23]
+
+[node name="MainScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.592157, 0.611765, 1 )
+
+[node name="Logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -68.0
+margin_right = 50.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="DeviceChoice" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="DeviceChoice"]
+anchor_top = 0.098
+anchor_right = 1.0
+anchor_bottom = 0.144
+margin_top = -0.352005
+margin_bottom = -0.455994
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver Connection"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeviceChoice"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 85.0
+margin_top = 120.0
+margin_right = -84.0
+margin_bottom = -83.0
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DeviceChoice/VBoxContainer"]
+margin_top = 212.0
+margin_right = 431.0
+margin_bottom = 259.0
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver IP:"
+
+[node name="webserver_ip" type="LineEdit" parent="DeviceChoice/VBoxContainer"]
+margin_top = 264.0
+margin_right = 431.0
+margin_bottom = 321.0
+custom_fonts/font = ExtResource( 3 )
+clear_button_enabled = true
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Label2" type="Label" parent="DeviceChoice/VBoxContainer"]
+margin_top = 326.0
+margin_right = 431.0
+margin_bottom = 373.0
+custom_fonts/font = ExtResource( 3 )
+text = "Assign a name:"
+
+[node name="webserver_name" type="LineEdit" parent="DeviceChoice/VBoxContainer"]
+margin_top = 378.0
+margin_right = 431.0
+margin_bottom = 435.0
+custom_fonts/font = ExtResource( 3 )
+clear_button_enabled = true
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Label4" type="Label" parent="DeviceChoice/VBoxContainer"]
+margin_top = 440.0
+margin_right = 431.0
+margin_bottom = 454.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DeviceChoice/VBoxContainer"]
+margin_top = 459.0
+margin_right = 431.0
+margin_bottom = 501.0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="connect" type="Button" parent="DeviceChoice/VBoxContainer/HBoxContainer2"]
+margin_left = 6.0
+margin_right = 206.0
+margin_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 200, 0 )
+focus_mode = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "connect"
+clip_text = true
+
+[node name="disconnect" type="Button" parent="DeviceChoice/VBoxContainer/HBoxContainer2"]
+margin_left = 224.0
+margin_right = 424.0
+margin_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 2 )
+text = "disconnect"
+clip_text = true
+
+[node name="HSeparator" type="HSeparator" parent="DeviceChoice/VBoxContainer"]
+margin_top = 506.0
+margin_right = 431.0
+margin_bottom = 516.0
+custom_styles/separator = SubResource( 3 )
+custom_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeviceChoice/VBoxContainer"]
+margin_top = 521.0
+margin_right = 431.0
+margin_bottom = 568.0
+alignment = 1
+
+[node name="Label3" type="Label" parent="DeviceChoice/VBoxContainer/HBoxContainer"]
+margin_left = 52.0
+margin_right = 335.0
+margin_bottom = 47.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Device Status:"
+align = 1
+
+[node name="status2" type="TextureRect" parent="DeviceChoice/VBoxContainer/HBoxContainer"]
+margin_left = 339.0
+margin_right = 379.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 40, 40 )
+rect_clip_content = true
+size_flags_horizontal = 4
+size_flags_vertical = 7
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 6 )
+
+[node name="state_message" type="Label" parent="DeviceChoice/VBoxContainer"]
+margin_left = 2.0
+margin_top = 573.0
+margin_right = 429.0
+margin_bottom = 609.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
+text = "no webserver to connect to..."
+
+[node name="DeviceManager" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="DeviceManager"]
+anchor_left = 0.141667
+anchor_top = 0.0976563
+anchor_right = 0.858333
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="DeviceManager/VBoxContainer2"]
+margin_right = 430.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver Manager"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeviceManager/VBoxContainer2"]
+margin_top = 67.0
+margin_right = 430.0
+margin_bottom = 101.0
+alignment = 1
+
+[node name="w_name" type="LineEdit" parent="DeviceManager/VBoxContainer2/HBoxContainer"]
+margin_right = 184.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 6 )
+text = "webserver_name"
+align = 1
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Label2" type="Label" parent="DeviceManager/VBoxContainer2/HBoxContainer"]
+margin_left = 188.0
+margin_top = 5.0
+margin_right = 194.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 7 )
+text = ":"
+align = 1
+valign = 1
+
+[node name="w_ip" type="LineEdit" parent="DeviceManager/VBoxContainer2/HBoxContainer"]
+margin_left = 198.0
+margin_right = 346.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 6 )
+text = "webserver_ip"
+align = 1
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="status" type="TextureRect" parent="DeviceManager/VBoxContainer2/HBoxContainer"]
+margin_left = 350.0
+margin_right = 430.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 80, 0 )
+rect_clip_content = true
+size_flags_vertical = 7
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeviceManager/VBoxContainer2"]
+margin_top = 121.0
+margin_right = 430.0
+margin_bottom = 242.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DeviceManager/VBoxContainer2/VBoxContainer"]
+margin_right = 430.0
+margin_bottom = 57.0
+size_flags_horizontal = 7
+alignment = 1
+
+[node name="moisture" type="LineEdit" parent="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+margin_left = 77.0
+margin_right = 207.0
+margin_bottom = 57.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 3 )
+text = "---"
+align = 1
+editable = false
+expand_to_text_length = true
+caret_blink = true
+caret_blink_speed = 0.5
+script = ExtResource( 7 )
+
+[node name="Timer2" type="Timer" parent="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2/moisture"]
+wait_time = 0.5
+
+[node name="moisture_btn" type="CheckBox" parent="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+margin_left = 211.0
+margin_right = 353.0
+margin_bottom = 57.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 8 )
+text = "Umidità"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="DeviceManager/VBoxContainer2/VBoxContainer"]
+margin_top = 77.0
+margin_right = 430.0
+margin_bottom = 121.0
+size_flags_horizontal = 7
+alignment = 1
+
+[node name="led1" type="CheckButton" parent="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+margin_left = 52.0
+margin_right = 213.0
+margin_bottom = 44.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 8 )
+text = "Led 1"
+
+[node name="led2" type="CheckButton" parent="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+margin_left = 217.0
+margin_right = 378.0
+margin_bottom = 44.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 8 )
+text = "Led 2"
+
+[node name="ColorPicker" type="ColorPicker" parent="DeviceManager/VBoxContainer2"]
+margin_top = 262.0
+margin_right = 430.0
+margin_bottom = 724.0
+
+[node name="WebServerList" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="WebServerList"]
+anchor_top = 0.0517578
+anchor_right = 1.0
+anchor_bottom = 0.0976563
+margin_left = 104.0
+margin_right = -104.0
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver List"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WebServerList"]
+anchor_top = 0.176
+anchor_right = 1.0
+anchor_bottom = 0.199
+margin_left = 48.0
+margin_top = -17.6
+margin_right = -47.0
+margin_bottom = 9.6
+grow_horizontal = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WebServerList/HBoxContainer"]
+margin_top = 13.0
+margin_right = 131.0
+margin_bottom = 37.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 9 )
+text = "Webserver ip"
+align = 1
+valign = 1
+
+[node name="sep" type="Label" parent="WebServerList/HBoxContainer"]
+margin_left = 141.0
+margin_top = 13.0
+margin_right = 147.0
+margin_bottom = 37.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 9 )
+text = "|"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="WebServerList/HBoxContainer"]
+margin_left = 157.0
+margin_top = 13.0
+margin_right = 324.0
+margin_bottom = 37.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 9 )
+text = "Webserver name"
+align = 1
+valign = 1
+
+[node name="sep2" type="Label" parent="WebServerList/HBoxContainer"]
+margin_left = 334.0
+margin_top = 13.0
+margin_right = 340.0
+margin_bottom = 37.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 9 )
+text = "|"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="WebServerList/HBoxContainer"]
+margin_left = 350.0
+margin_top = 13.0
+margin_right = 505.0
+margin_bottom = 37.0
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 9 )
+text = "Last connection"
+align = 1
+valign = 1
+
+[node name="Tree" type="Tree" parent="WebServerList"]
+anchor_left = 0.0458984
+anchor_top = 0.205
+anchor_right = 0.954102
+anchor_bottom = 0.866667
+size_flags_horizontal = 6
+custom_fonts/font = SubResource( 11 )
+columns = 3
+hide_root = true
+select_mode = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Debug" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="Debug"]
+anchor_top = 0.098
+anchor_right = 1.0
+anchor_bottom = 0.144
+margin_left = 104.0
+margin_top = -26.8
+margin_right = -104.0
+margin_bottom = -6.39999
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver Debug"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug"]
+anchor_left = 0.057
+anchor_top = 0.156
+anchor_right = 0.943
+anchor_bottom = 0.908
+margin_left = 0.167999
+margin_top = 0.255997
+margin_right = -0.16803
+margin_bottom = 0.207947
+custom_styles/normal = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Log" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="Label2" type="Label" parent="Log"]
+anchor_top = 0.098
+anchor_right = 1.0
+anchor_bottom = 0.144
+margin_left = 96.0
+margin_top = -26.8
+margin_right = -96.0
+margin_bottom = -0.399994
+custom_fonts/font = ExtResource( 3 )
+text = "Webserver Log"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Log"]
+anchor_left = 0.057
+anchor_top = 0.156
+anchor_right = 0.943
+anchor_bottom = 0.908
+margin_left = 0.167999
+margin_top = 0.255997
+margin_right = -0.16803
+margin_bottom = 0.207947
+custom_styles/normal = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Guide" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label2" type="Label" parent="Guide"]
+anchor_left = 0.117188
+anchor_top = 0.04
+anchor_right = 0.882813
+anchor_bottom = 0.12
+custom_fonts/font = ExtResource( 3 )
+text = "Guide"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Guide"]
+anchor_left = 0.03125
+anchor_top = 0.133333
+anchor_right = 0.96875
+anchor_bottom = 0.866667
+custom_styles/normal = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 14 )
+bbcode_enabled = true
+bbcode_text = "[color=#ff8000]- Webserver Connection:[/color]
+Connect to an ESP8266 Webserver using the ip given by your local wifi or hotspot. You can also give your webserver an alias-name with which the app will save it.
+
+[color=#ff8000]- Webserver Manager:[/color]
+Control and manage your ESP8266 throught Webserver client calls, based on the services your ESP offers.
+
+[color=#ff8000]- Webserver Debug:[/color]
+A debug interface of your ESP. Get text based informations about your ESP status, functions and interactions.
+
+[color=#ff8000]- Webserver List:[/color]
+List of all the Webservers you accessed to. They are stored with the alias you gave them, their IP and the date-time of your last connection. You can also fast-connect to them simply clicking on them and going to the Webserver Connection page."
+text = "- Webserver Connection:
+Connect to an ESP8266 Webserver using the ip given by your local wifi or hotspot. You can also give your webserver an alias-name with which the app will save it.
+
+- Webserver Manager:
+Control and manage your ESP8266 throught Webserver client calls, based on the services your ESP offers.
+
+- Webserver Debug:
+A debug interface of your ESP. Get text based informations about your ESP status, functions and interactions.
+
+- Webserver List:
+List of all the Webservers you accessed to. They are stored with the alias you gave them, their IP and the date-time of your last connection. You can also fast-connect to them simply clicking on them and going to the Webserver Connection page."
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Filter" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.678431 )
+
+[node name="Menu" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_left = -459.514
+margin_right = 0.486328
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Menu"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.105882, 0.133333, 1 )
+
+[node name="MenuContainer" type="VBoxContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Menu/MenuContainer"]
+margin_right = 460.0
+margin_bottom = 57.0
+size_flags_horizontal = 11
+custom_styles/normal = SubResource( 15 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.113725, 0.105882, 0.133333, 1 )
+text = "HOME"
+align = 1
+valign = 1
+
+[node name="ChangeIP" type="Button" parent="Menu/MenuContainer"]
+margin_top = 57.0
+margin_right = 460.0
+margin_bottom = 110.0
+focus_mode = 0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Webserver Connection"
+
+[node name="Webserver" type="Button" parent="Menu/MenuContainer"]
+margin_top = 110.0
+margin_right = 460.0
+margin_bottom = 163.0
+focus_mode = 0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Webserver Manager"
+
+[node name="Debug" type="Button" parent="Menu/MenuContainer"]
+margin_top = 163.0
+margin_right = 460.0
+margin_bottom = 216.0
+focus_mode = 0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Webserver Debug"
+
+[node name="Log" type="Button" parent="Menu/MenuContainer"]
+margin_top = 216.0
+margin_right = 460.0
+margin_bottom = 269.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Webserver Log"
+
+[node name="WebserverList" type="Button" parent="Menu/MenuContainer"]
+margin_top = 269.0
+margin_right = 460.0
+margin_bottom = 322.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Webserver List"
+
+[node name="Guide" type="Button" parent="Menu/MenuContainer"]
+margin_top = 322.0
+margin_right = 460.0
+margin_bottom = 375.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Guide"
+
+[node name="Exit" type="Button" parent="Menu/MenuContainer"]
+margin_top = 967.0
+margin_right = 460.0
+margin_bottom = 1024.0
+focus_mode = 0
+size_flags_vertical = 10
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+text = "Quit"
+
+[node name="Overlay" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="TextureButton" parent="Overlay"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -76.0
+margin_top = 10.0
+margin_right = -16.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 23 )
+[connection signal="pressed" from="DeviceChoice/VBoxContainer/HBoxContainer2/connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="DeviceChoice/VBoxContainer/HBoxContainer2/disconnect" to="." method="_on_disconnect_pressed"]
+[connection signal="timeout" from="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2/moisture/Timer2" to="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2/moisture" method="_on_Timer2_timeout"]
+[connection signal="toggled" from="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer2/moisture_btn" to="." method="_on_moisture_btn_toggled"]
+[connection signal="toggled" from="DeviceManager/VBoxContainer2/VBoxContainer/HBoxContainer3/led1" to="." method="_on_led1_toggled"]
+[connection signal="color_changed" from="DeviceManager/VBoxContainer2/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="item_selected" from="WebServerList/Tree" to="." method="_on_Tree_item_selected"]
+[connection signal="pressed" from="Menu/MenuContainer/ChangeIP" to="." method="_on_ChangeIP_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/Webserver" to="." method="_on_Webserver_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/Debug" to="." method="_on_Debug_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/Log" to="." method="_on_Log_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/WebserverList" to="." method="_on_WebserverList_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/Guide" to="." method="_on_Guide_pressed"]
+[connection signal="pressed" from="Menu/MenuContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Overlay/MenuButton" to="." method="_on_MenuButton_pressed"]

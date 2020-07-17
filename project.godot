@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="ESP8266"
+run/main_scene="res://scenes/MainScene.tscn"
+config/icon="res://app_icon.png"
+
+[autoload]
+
+webserver_data="*res://scenes/scripts/webserver_data.gd"
+HTTPManager="*res://scenes/HTTPManager.tscn"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
+
+[display]
+
+window/size/width=600
+window/size/height=1024
+window/dpi/allow_hidpi=true
+window/handheld/orientation="sensor"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "github-integration" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

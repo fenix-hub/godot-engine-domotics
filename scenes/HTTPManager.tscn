@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/scripts/http_manager.gd" type="Script" id=1]
+
+[node name="HTTPManager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+use_threads = true
+timeout = 5
+
+[node name="HTTPCommand" type="HTTPRequest" parent="."]
+
+[node name="TimedHTTPRequest" type="HTTPRequest" parent="."]
+use_threads = true
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="TimedHTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
